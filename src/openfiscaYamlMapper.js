@@ -21,8 +21,8 @@ function getValue(row) {
 	if (row.positiveAmount)
 		source = row.positiveAmount;
 
-	if (row.negativeAmount)
-		source = '-' + row.negativeAmount;
+	if (row.employeeAmount)
+		source = '-' + row.employeeAmount;
 
 	if (row.employerAmount)
 		source = '-' + row.employerAmount;

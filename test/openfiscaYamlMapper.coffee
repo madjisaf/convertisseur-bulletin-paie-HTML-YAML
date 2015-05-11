@@ -43,8 +43,8 @@ describe 'Mapper', ->
 			SOURCE =
 				name: 'Ass. maladie-solid. autonomie sur brut'
 				base: '12 900,00'
-				assiette: '0,75'
-				negativeAmount: '96,75'
+				employeeBase: '0,75'
+				employeeAmount: '96,75'
 				employerBase: '13,10'
 				employerAmount: '1 689,90'
 

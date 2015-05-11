@@ -53,11 +53,11 @@ describe 'Parser', ->
 				it 'should have proper base', ->
 					target.base.should.equal '12 900,00'
 
-				it 'should have proper assiette', ->
-					target.assiette.should.equal '0,75'
+				it 'should have proper employeeBase', ->
+					target.employeeBase.should.equal '0,75'
 
-				it 'should have proper negativeAmount', ->
-					target.negativeAmount.should.equal '96,75'
+				it 'should have proper employeeAmount', ->
+					target.employeeAmount.should.equal '96,75'
 
 				it 'should have proper employerBase', ->
 					target.employerBase.should.equal '13,10'
