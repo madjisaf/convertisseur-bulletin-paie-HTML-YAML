@@ -9,24 +9,21 @@ function toOpenFisca(item) {
 
 	item.data.forEach(function(row) {
 		var openfisca = mapItemToOpenFisca(row);
-		item[openfisca.type + '_variables'][openfisca.name] = getValue(row);
+
+		if (openfisca.input)
+			result.input_variables[openfisca.input] = parseNumber(row.positiveAmount);
+		else if (openfisca.employer)
+			result.output_variables[openfisca.employer] = parseNumber(row.employerAmount, '-');
+		else if (openfisca.employee)
+			result.output_variables[openfisca.employee] = parseNumber(row.employeeAmount, '-');
 	});
 
 	return result;
 }
 
-function getValue(row) {
-	var source = '';
-
-	if (row.positiveAmount)
-		source = row.positiveAmount;
-
-	if (row.employeeAmount)
-		source = '-' + row.employeeAmount;
-
-	if (row.employerAmount)
-		source = '-' + row.employerAmount;
-
+function parseNumber(string, prefix) {
+	var source = prefix || '';
+	source += string;
 	return Number(source.replace(' ', '').replace(',', '.'));
 }
 
@@ -37,6 +34,6 @@ function mapItemToOpenFisca(row) {
 
 module.exports = {
 	toOpenFisca: toOpenFisca,
-	getValue: getValue,
+	parseNumber: parseNumber,
 	mapItemToOpenFisca: mapItemToOpenFisca,
 }
