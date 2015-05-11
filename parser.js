@@ -7,7 +7,7 @@ var result,
 	buffer,
 	state = {
 		tag: '',
-		repetition: 0
+		index: 0
 	};
 
 function store() {
@@ -25,9 +25,9 @@ function init() {
 
 function setState(tag) {
 	if (state.tag == tag)
-		state.repetition += 1;
+		state.index += 1;
 	else
-		state.repetition = 0;
+		state.index = 0;
 
 	state.tag = tag;
 	state.name = tagNamesToStates[state.tag];
@@ -52,7 +52,7 @@ var parser = new htmlparser.Parser({
 		setState(tagname);
 	},
 	ontext: function(text) {
-		if (state.name == 'periodPerhaps') {
+		if (state.name == 'periodPerhaps' && state.index == 0) {
 			var parts = text.match(/Période du (\d{2})\/(\d{2})\/(\d{4})/);
 			if (parts)
 				buffer.period = 'month:' + parts[3] + '-' + parts[2];
