@@ -21,6 +21,9 @@ describe 'Parser', ->
 		it 'should have a period', ->
 			actual.period.should.equal 'month:2015-01'
 
+		it 'should be clean of underscore-prefixed items', ->
+			actual.should.not.have.property '_separationColumn'
+
 		describe 'payroll', ->
 			it 'should start with the first row', ->
 				actual.data[0].name.should.equal 'Salaire mensuel'

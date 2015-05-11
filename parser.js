@@ -90,6 +90,8 @@ var parser = new htmlparser.Parser({
 			var property = state.name.match(/tax\.(.+)/)[1];
 			buffer.data[buffer.data.length - 1][property] = buffer.data[buffer.data.length - 1][property] || '';
 			buffer.data[buffer.data.length - 1][property] += text;
+		} else if (state.name.indexOf('_') == 0) {	// underscore-prefixed states are garbage
+			return;
 		} else {
 			buffer[state.name] = buffer[state.name] || '';
 			buffer[state.name] += text;
