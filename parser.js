@@ -5,7 +5,10 @@ var htmlparser = require('htmlparser2');
 
 var result,
 	buffer,
-	state;
+	state = {
+		tag: '',
+		repetition: 0
+	};
 
 function store() {
 	for (var key in buffer)
@@ -20,13 +23,16 @@ function init() {
 	buffer = {};
 }
 
-function setState(targetState) {
-	state = targetState;
+function setState(tag) {
+	if (state.tag == tag)
+		state.repetition += 1;
+	else
+		state.repetition = 0;
+
+	state.tag = tag;
+	state.name = tagNamesToStates[state.tag];
 }
 
-function currentState() {
-	return state;
-}
 
 var tagNamesToStates = {
 	h3: 'name',
@@ -43,16 +49,16 @@ var parser = new htmlparser.Parser({
 			init();
 		}
 
-		setState(tagNamesToStates[tagname]);
+		setState(tagname);
 	},
 	ontext: function(text) {
-		if (currentState() == 'periodPerhaps') {
+		if (state.name == 'periodPerhaps') {
 			var parts = text.match(/Période du (\d{2})\/(\d{2})\/(\d{4})/);
 			if (parts)
 				buffer.period = 'month:' + parts[3] + '-' + parts[2];
 		} else {
-			buffer[currentState()] = buffer[currentState()] || '';
-			buffer[currentState()] += text;
+			buffer[state.name] = buffer[state.name] || '';
+			buffer[state.name] += text;
 		}
 	},
 	onclosetag: function(tagname) {
