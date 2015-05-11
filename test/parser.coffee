@@ -14,3 +14,6 @@ describe 'Parser', ->
 
 		it 'should have a name', ->
 			actual.name.should.equal '3 . Taux unique sur tranches B et C (n° 5382).'
+
+		it 'should have an id', ->
+			actual.id.should.equal '25005'
