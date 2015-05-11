@@ -18,6 +18,9 @@ describe 'Parser', ->
 		it 'should have an id', ->
 			actual.id.should.equal '25005'
 
+		it 'should have a period', ->
+			actual.period.should.equal 'month:2015-01'
+
 		it 'should have a description', ->
 			actual.description.should.equal
 "Cadre dirigeant dont la rémunération est déterminée sans

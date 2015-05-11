@@ -31,7 +31,8 @@ function currentState() {
 var tagNamesToStates = {
 	h3: 'name',
 	dt: 'id',
-	dd: 'description'
+	dd: 'description',
+	strong: 'periodPerhaps'
 }
 
 
@@ -45,8 +46,14 @@ var parser = new htmlparser.Parser({
 		setState(tagNamesToStates[tagname]);
 	},
 	ontext: function(text) {
-		buffer[currentState()] = buffer[currentState()] || '';
-		buffer[currentState()] += text;
+		if (currentState() == 'periodPerhaps') {
+			var parts = text.match(/Période du (\d{2})\/(\d{2})\/(\d{4})/);
+			if (parts)
+				buffer.period = 'month:' + parts[3] + '-' + parts[2];
+		} else {
+			buffer[currentState()] = buffer[currentState()] || '';
+			buffer[currentState()] += text;
+		}
 	},
 	onclosetag: function(tagname) {
 	}
