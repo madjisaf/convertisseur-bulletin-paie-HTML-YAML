@@ -30,7 +30,8 @@ function currentState() {
 
 var tagNamesToStates = {
 	h3: 'name',
-	dt: 'id'
+	dt: 'id',
+	dd: 'description'
 }
 
 
