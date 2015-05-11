@@ -39,6 +39,9 @@ describe 'Mapper', ->
 			actual.input_variables.should.have.property 'salaire_de_base'
 			actual.input_variables.salaire_de_base.should.equal 12900
 
+		it 'should not have data', ->
+			actual.should.not.have.property 'data'
+
 		describe 'output variables', ->
 			it 'should have employer amount', ->
 				actual.output_variables.should.have.property 'contribution_solidarite_autonomie'
