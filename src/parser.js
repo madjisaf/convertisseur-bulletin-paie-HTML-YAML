@@ -1,5 +1,3 @@
-var fs = require('fs');
-
 var htmlparser = require('htmlparser2');
 
 
@@ -105,9 +103,9 @@ var parser = new htmlparser.Parser({
 
 
 
-exports.parse = function parse(filePath) {
+exports.parse = function parse(data) {
 	init();
-	parser.write(fs.readFileSync(filePath || process.env.argv[2]));
+	parser.write(data);
 	parser.end();
 	store();
 

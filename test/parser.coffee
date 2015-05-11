@@ -1,9 +1,11 @@
+fs = require 'fs'
+
 parser = require '../src/parser'
 
 SOURCE = __dirname + '/item.html';
 
 describe 'Parser', ->
-	actual = parser.parse SOURCE
+	actual = parser.parse fs.readFileSync SOURCE
 
 	it 'should parse one item', ->
 		actual.should.have.length 1
