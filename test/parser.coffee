@@ -25,6 +25,9 @@ describe 'Parser', ->
 			it 'should start with the first row', ->
 				actual.data[0].name.should.equal 'Salaire mensuel'
 
+			it 'should start with the first amount', ->
+				actual.data[0].positiveAmount.should.equal '12 900,00'
+
 		it 'should have a description', ->
 			actual.description.should.equal
 "Cadre dirigeant dont la rémunération est déterminée sans

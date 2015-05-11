@@ -58,7 +58,13 @@ var currentStateAndTagNameToNextState = {
 	malformedHeader: { tbody: 'payroll' },
 	payroll: { tr: 'tax' },
 	tax: { td: 'tax.name' },
-	'tax.name': { td: 'tax.base' }
+	'tax.name': { td: 'tax.base' },
+	'tax.base': { td: 'tax.assiette' },
+	'tax.assiette': { td: 'tax.positiveAmount' },
+	'tax.positiveAmount': { td: 'tax.negativeAmount' },
+	'tax.negativeAmount': { td: '_separationColumn' },
+	'_separationColumn': { td: 'tax.employerBase' },
+	'tax.employerBase': { td: 'tax.employerAmount' }
 }
 
 
