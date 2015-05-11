@@ -1,11 +1,14 @@
 {
-	"name": "memento-paie-parser",
-	"dependencies": {
-		"coffee-script": "^1.9.2",
-		"mocha": "^2.2.4",
-		"should": "^6.0.1"
-	},
-	"scripts": {
-		"test": "mocha"
-	}
+  "name": "memento-paie-parser",
+  "dependencies": {
+    "js-yaml": "^3.3.0"
+  },
+  "devDependencies": {
+    "should": "^6.0.1",
+    "mocha": "^2.2.4",
+    "coffee-script": "^1.9.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
 }

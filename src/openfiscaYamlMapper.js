@@ -1,4 +1,9 @@
-var openfiscaMap = require('../assets/openfiscaMap.json');
+var fs = require('fs');
+
+var yaml = require('js-yaml');
+
+var OPENFISCA_MAP_FILENAME = 'openfiscaMap.yaml',
+	openfiscaMap = yaml.safeLoad(fs.readFileSync(__dirname + '/../assets/' + OPENFISCA_MAP_FILENAME));
 
 
 function toOpenFisca(item) {

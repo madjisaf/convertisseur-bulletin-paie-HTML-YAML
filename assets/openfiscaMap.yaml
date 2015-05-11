@@ -1,0 +1,5 @@
+Salaire mensuel:
+  input: salaire_de_base
+Ass. maladie-solid. autonomie sur brut:
+  employer: contribution_solidarite_autonomie
+  employee: contribution_exceptionnelle_solidarite
