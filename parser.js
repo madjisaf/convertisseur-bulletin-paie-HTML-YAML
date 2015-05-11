@@ -5,10 +5,7 @@ var htmlparser = require('htmlparser2');
 
 var result,
 	buffer,
-	state = {
-		tag: '',
-		index: 0
-	};
+	state;
 
 function store() {
 	for (var key in buffer)
@@ -21,24 +18,32 @@ function store() {
 function init() {
 	result = [];
 	buffer = {};
+	state = {
+		tag: '',
+		previous: undefined,
+		name: 'root'
+	}
 }
 
 function setState(tag) {
-	if (state.tag == tag)
-		state.index += 1;
-	else
-		state.index = 0;
-
 	state.tag = tag;
-	state.name = tagNamesToStates[state.tag];
+
+	var nextState = currentStateAndTagNameToNextState[state.name] && currentStateAndTagNameToNextState[state.name][state.tag];
+	if (nextState) {
+		state.previous = state.name;
+		state.name = nextState;
+	}
 }
 
 
-var tagNamesToStates = {
-	h3: 'name',
-	dt: 'id',
-	dd: 'description',
-	strong: 'periodPerhaps'
+var currentStateAndTagNameToNextState = {
+	root: { h3: 'name' },
+	name: { dt: 'id' },
+	id: { dd: 'description' },
+	description: { strong: 'period' },
+	period: { tbody: 'malformedHeader' },
+	malformedHeader: { tbody: 'payroll' },
+	payroll: { tr: 'row' }
 }
 
 
@@ -52,7 +57,7 @@ var parser = new htmlparser.Parser({
 		setState(tagname);
 	},
 	ontext: function(text) {
-		if (state.name == 'periodPerhaps' && state.index == 0) {
+		if (state.name == 'period') {
 			var parts = text.match(/Période du (\d{2})\/(\d{2})\/(\d{4})/);
 			if (parts)
 				buffer.period = 'month:' + parts[3] + '-' + parts[2];
