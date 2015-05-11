@@ -21,6 +21,9 @@ function parseNumber(string, prefix) {
 function mapRow(row) {
 	openfisca = openfiscaMap[row.name];
 
+	if (! openfisca)
+		throw new ReferenceError('No mapping found for "' + row.name + '". Please add it to ' + OPENFISCA_MAP_FILENAME);
+
 	if (openfisca.input)
 		this.input_variables[openfisca.input] = parseNumber(row.positiveAmount);
 	if (openfisca.employer)
@@ -33,4 +36,5 @@ function mapRow(row) {
 module.exports = {
 	toOpenFisca: toOpenFisca,
 	parseNumber: parseNumber,
+	mapRow: mapRow,
 }

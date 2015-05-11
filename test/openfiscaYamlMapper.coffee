@@ -55,3 +55,8 @@ describe 'Mapper', ->
 
 		it 'should negate numbers if requested', ->
 			mapper.parseNumber('1 689,90', '-').should.equal -1689.90
+
+
+	describe 'mapRow', ->
+		it 'should throw on unmapped elements', ->
+			(-> mapper.mapRow { name: 'unmapped' }).should.throw ReferenceError
