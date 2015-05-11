@@ -65,16 +65,17 @@ var currentStateAndTagNameToNextState = {
 	'tax.negativeAmount': { td: '_separationColumn' },
 	_separationColumn: { td: 'tax.employerBase' },
 	'tax.employerBase': { td: 'tax.employerAmount' },
-	'tax.employerAmount': { tr: 'tax' }
+	'tax.employerAmount': {
+		tr: 'tax',
+		h3: 'name',
+	},
 }
 
 
 var parser = new htmlparser.Parser({
 	onopentag: function(tagname, attribs) {
-		if (tagname == 'h3') {
+		if (tagname == 'h3' && state.name != 'root')
 			store();
-			init();
-		}
 
 		setState(tagname);
 	},
