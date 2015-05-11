@@ -2,17 +2,18 @@ var fs = require('fs');
 
 var htmlparser = require('htmlparser2');
 
-var SOURCE = './source.html';
 
-var parsed,
+var result,
+	buffer,
 	state;
 
-function store(parsed) {
-	console.log(parsed);
+function store(parsedItem) {
+	result.push(parsedItem);
 }
 
 function init() {
-	parsed = {};
+	result = [];
+	buffer = {};
 }
 
 function setState(targetState) {
@@ -23,26 +24,35 @@ function currentState() {
 	return state;
 }
 
+var tagNamesToStates = {
+	h3: 'name',
+	dt: 'id'
+}
+
 
 var parser = new htmlparser.Parser({
 	onopentag: function(tagname, attribs) {
 		if (tagname == 'h3') {
+			store(buffer);
 			init();
-			setState('name');
 		}
+
+		setState(tagNamesToStates[tagname]);
 	},
 	ontext: function(text) {
-		parsed[currentState()] = parsed[currentState()] || '';
-		parsed[currentState()] += text;
+		buffer[currentState()] = buffer[currentState()] || '';
+		buffer[currentState()] += text;
 	},
 	onclosetag: function(tagname) {
-		if (tagname == 'h3') {
-			store(parsed);
-		}
 	}
 }, { decodeEntities: true });
 
 
-init();
-parser.write(fs.readFileSync(SOURCE));
-parser.end();
+
+exports.parse = function parse(filePath) {
+	init();
+	parser.write(fs.readFileSync(filePath || process.env.argv[2]));
+	parser.end();
+
+	return result;
+}
