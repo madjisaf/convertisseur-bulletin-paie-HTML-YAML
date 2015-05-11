@@ -8,11 +8,24 @@ var result,
 	state;
 
 function store() {
-	for (var key in buffer)
-		if (buffer.hasOwnProperty(key))
-			buffer[key] = buffer[key].trim();
+	result.push(deepTrim(buffer));
+}
 
-	result.push(buffer);
+function deepTrim(object) {
+	for (var key in object) {
+		if (object.hasOwnProperty(key)) {
+			switch (typeof object[key]) {
+				case 'string':
+					object[key] = object[key].trim();
+					break;
+				case 'object':
+					object[key] = deepTrim(object[key]);
+					break;
+			}
+		}
+	}
+
+	return object;
 }
 
 function init() {
