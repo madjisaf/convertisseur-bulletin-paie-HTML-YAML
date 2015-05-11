@@ -26,6 +26,10 @@ describe 'Mapper', ->
 		it 'should have a period', ->
 			actual.period.should.equal PERIOD
 
+		it 'should have input variables', ->
+			actual.input_variables.should.have.property 'salaire_de_base'
+			actual.input_variables.salaire_de_base.should.equal 12900
+
 	describe 'getValue', ->
 		describe 'on a base salary row', ->
 			SOURCE =
