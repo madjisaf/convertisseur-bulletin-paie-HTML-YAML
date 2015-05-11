@@ -1,6 +1,6 @@
-parser = require '../parser'
+parser = require '../src/parser'
 
-SOURCE = __dirname + '/../item.html';
+SOURCE = __dirname + '/item.html';
 
 describe 'Parser', ->
 	actual = parser.parse SOURCE
