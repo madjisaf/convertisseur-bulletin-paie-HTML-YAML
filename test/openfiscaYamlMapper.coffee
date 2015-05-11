@@ -2,6 +2,30 @@ mapper = require '../src/openfiscaYamlMapper'
 
 
 describe 'Mapper', ->
+	describe 'OpenFisca object', ->
+		NAME	= '3 . Taux unique sur tranches B et C (n° 5382).'
+		ID		= '25005'
+		PERIOD	= 'month:2015-01'
+		SOURCE	=
+			name	: NAME
+			id		: ID
+			period	: PERIOD
+			data	: [
+				name: 'Salaire mensuel'
+				positiveAmount: '12 900,00'
+			]
+
+		actual = mapper.toOpenFisca SOURCE
+
+		it 'should have a name', ->
+			actual.name.should.equal NAME
+
+		it 'should have an id', ->
+			actual.id.should.equal ID
+
+		it 'should have a period', ->
+			actual.period.should.equal PERIOD
+
 	describe 'getValue', ->
 		describe 'on a base salary row', ->
 			SOURCE =
