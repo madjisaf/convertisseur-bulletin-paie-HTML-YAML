@@ -7,16 +7,7 @@ function toOpenFisca(item) {
 	result.input_variables = {};
 	result.output_variables = {};
 
-	item.data.forEach(function(row) {
-		var openfisca = mapItemToOpenFisca(row);
-
-		if (openfisca.input)
-			result.input_variables[openfisca.input] = parseNumber(row.positiveAmount);
-		else if (openfisca.employer)
-			result.output_variables[openfisca.employer] = parseNumber(row.employerAmount, '-');
-		else if (openfisca.employee)
-			result.output_variables[openfisca.employee] = parseNumber(row.employeeAmount, '-');
-	});
+	item.data.forEach(mapRow.bind(result));
 
 	return result;
 }
@@ -27,13 +18,19 @@ function parseNumber(string, prefix) {
 	return Number(source.replace(' ', '').replace(',', '.'));
 }
 
-function mapItemToOpenFisca(row) {
-	return openfiscaMap[row.name]
+function mapRow(row) {
+	openfisca = openfiscaMap[row.name];
+
+	if (openfisca.input)
+		this.input_variables[openfisca.input] = parseNumber(row.positiveAmount);
+	if (openfisca.employer)
+		this.output_variables[openfisca.employer] = parseNumber(row.employerAmount, '-');
+	if (openfisca.employee)
+		this.output_variables[openfisca.employee] = parseNumber(row.employeeAmount, '-');
 }
 
 
 module.exports = {
 	toOpenFisca: toOpenFisca,
 	parseNumber: parseNumber,
-	mapItemToOpenFisca: mapItemToOpenFisca,
 }
