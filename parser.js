@@ -7,8 +7,8 @@ var result,
 	buffer,
 	state;
 
-function store(parsedItem) {
-	result.push(parsedItem);
+function store() {
+	result.push(buffer);
 }
 
 function init() {
@@ -33,7 +33,7 @@ var tagNamesToStates = {
 var parser = new htmlparser.Parser({
 	onopentag: function(tagname, attribs) {
 		if (tagname == 'h3') {
-			store(buffer);
+			store();
 			init();
 		}
 
@@ -53,6 +53,7 @@ exports.parse = function parse(filePath) {
 	init();
 	parser.write(fs.readFileSync(filePath || process.env.argv[2]));
 	parser.end();
+	store();
 
 	return result;
 }
