@@ -1,4 +1,4 @@
-mapper = require '../src/openfiscaYamlMapper'
+mapper = require '../src/openfiscaMapper'
 
 
 describe 'Mapper', ->
