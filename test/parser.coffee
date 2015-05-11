@@ -25,11 +25,46 @@ describe 'Parser', ->
 			actual.should.not.have.property '_separationColumn'
 
 		describe 'payroll', ->
-			it 'should start with the first row', ->
-				actual.data[0].name.should.equal 'Salaire mensuel'
+			target = null
 
-			it 'should start with the first amount', ->
-				actual.data[0].positiveAmount.should.equal '12 900,00'
+			before ->
+				target = actual.data
+
+			it 'should have the expected amount of rows', ->
+				target.should.have.length 29
+
+			describe 'base salary', ->
+				before ->
+					target = actual.data[0]
+
+				it 'should have proper name', ->
+					target.name.should.equal 'Salaire mensuel'
+
+				it 'should have proper amount', ->
+					target.positiveAmount.should.equal '12 900,00'
+
+			describe 'tax', ->
+				before ->
+					target = actual.data[2]
+
+				it 'should have proper name', ->
+					target.name.should.equal 'Ass. maladie-solid. autonomie sur brut'
+
+				it 'should have proper base', ->
+					target.base.should.equal '12 900,00'
+
+				it 'should have proper assiette', ->
+					target.assiette.should.equal '0,75'
+
+				it 'should have proper negativeAmount', ->
+					target.negativeAmount.should.equal '96,75'
+
+				it 'should have proper employerBase', ->
+					target.employerBase.should.equal '13,10'
+
+				it 'should have proper employerAmount', ->
+					target.employerAmount.should.equal '1 689,90'
+
 
 		it 'should have a description', ->
 			actual.description.should.equal
