@@ -13,4 +13,4 @@ describe 'Parser', ->
 			actual = actual[0]
 
 		it 'should have a name', ->
-			actual.name.should.equal '3 . Taux unique sur tranches B et C (n° 5382).'
+			actual.name.should.equal '3 . Taux unique sur tranches B et C (n° 5382).'

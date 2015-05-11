@@ -8,6 +8,10 @@ var result,
 	state;
 
 function store() {
+	for (var key in buffer)
+		if (buffer.hasOwnProperty(key))
+			buffer[key] = buffer[key].trim();
+
 	result.push(buffer);
 }
 
