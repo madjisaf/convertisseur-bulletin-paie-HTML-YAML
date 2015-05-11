@@ -64,7 +64,8 @@ var currentStateAndTagNameToNextState = {
 	'tax.positiveAmount': { td: 'tax.negativeAmount' },
 	'tax.negativeAmount': { td: '_separationColumn' },
 	_separationColumn: { td: 'tax.employerBase' },
-	'tax.employerBase': { td: 'tax.employerAmount' }
+	'tax.employerBase': { td: 'tax.employerAmount' },
+	'tax.employerAmount': { tr: 'tax' }
 }
 
 
