@@ -56,7 +56,9 @@ var currentStateAndTagNameToNextState = {
 	description: { strong: 'period' },
 	period: { tbody: 'malformedHeader' },
 	malformedHeader: { tbody: 'payroll' },
-	payroll: { tr: 'row' }
+	payroll: { tr: 'tax' },
+	tax: { td: 'tax.name' },
+	'tax.name': { td: 'tax.base' }
 }
 
 
@@ -74,6 +76,14 @@ var parser = new htmlparser.Parser({
 			var parts = text.match(/Période du (\d{2})\/(\d{2})\/(\d{4})/);
 			if (parts)
 				buffer.period = 'month:' + parts[3] + '-' + parts[2];
+		} else if (state.name == 'payroll') {
+			buffer.data = [];
+		} else if (state.name == 'tax') {
+			buffer.data[buffer.data.length] = {};
+		} else if (state.name.match(/tax\./)) {
+			var property = state.name.match(/tax\.(.+)/)[1];
+			buffer.data[buffer.data.length - 1][property] = buffer.data[buffer.data.length - 1][property] || '';
+			buffer.data[buffer.data.length - 1][property] += text;
 		} else {
 			buffer[state.name] = buffer[state.name] || '';
 			buffer[state.name] += text;

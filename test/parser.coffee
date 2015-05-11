@@ -21,6 +21,10 @@ describe 'Parser', ->
 		it 'should have a period', ->
 			actual.period.should.equal 'month:2015-01'
 
+		describe 'payroll', ->
+			it 'should start with the first row', ->
+				actual.data[0].name.should.equal 'Salaire mensuel'
+
 		it 'should have a description', ->
 			actual.description.should.equal
 "Cadre dirigeant dont la rémunération est déterminée sans
