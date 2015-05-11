@@ -1,0 +1,6 @@
+{
+	"Salaire mensuel": {
+		"type": "input",
+		"name": "salaire_de_base"
+	}
+}
