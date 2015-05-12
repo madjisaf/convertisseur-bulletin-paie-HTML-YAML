@@ -67,6 +67,52 @@ var currentStateAndTagNameToNextState = {
 		tr: 'tax',
 		h3: 'name',
 	},
+};
+
+var stateHandlers = [
+	{
+		matcher: /^period$/,
+		handler: function(text) {
+			var parts = text.match(/Période du (\d{2})\/(\d{2})\/(\d{4})/);
+			if (parts)
+				buffer.period = 'month:' + parts[3] + '-' + parts[2];
+		}
+	},
+	{
+		matcher: /^payroll$/,
+		handler: function(text) {
+			buffer.data = [];
+		}
+	},
+	{
+		matcher: /^tax$/,
+		handler: function(text) {
+			buffer.data[buffer.data.length] = {};
+		}
+	},
+	{
+		matcher: /^tax\./,
+		handler: function(text) {
+			var property = state.name.match(/tax\.(.+)/)[1];
+			buffer.data[buffer.data.length - 1][property] = buffer.data[buffer.data.length - 1][property] || '';
+			buffer.data[buffer.data.length - 1][property] += text;
+		}
+	},
+	{
+		matcher: /^_/,
+		handler: function(text) {
+			// underscore-prefixed states are garbage, throw content away
+		}
+	}
+];
+
+function handles(text) {
+	return function(stateHandler) {	// currying for iteration
+		if (stateHandler.matcher.exec(state.name)) {
+			stateHandler.handler(text);
+			return true;
+		}
+	}
 }
 
 
@@ -78,21 +124,7 @@ var parser = new htmlparser.Parser({
 		setState(tagname);
 	},
 	ontext: function(text) {
-		if (state.name == 'period') {
-			var parts = text.match(/Période du (\d{2})\/(\d{2})\/(\d{4})/);
-			if (parts)
-				buffer.period = 'month:' + parts[3] + '-' + parts[2];
-		} else if (state.name == 'payroll') {
-			buffer.data = [];
-		} else if (state.name == 'tax') {
-			buffer.data[buffer.data.length] = {};
-		} else if (state.name.match(/tax\./)) {
-			var property = state.name.match(/tax\.(.+)/)[1];
-			buffer.data[buffer.data.length - 1][property] = buffer.data[buffer.data.length - 1][property] || '';
-			buffer.data[buffer.data.length - 1][property] += text;
-		} else if (state.name.indexOf('_') == 0) {	// underscore-prefixed states are garbage
-			return;
-		} else {
+		if (! stateHandlers.some(handles(text))) {
 			buffer[state.name] = buffer[state.name] || '';
 			buffer[state.name] += text;
 		}
