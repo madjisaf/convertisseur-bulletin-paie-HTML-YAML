@@ -28,8 +28,10 @@ function parseNumber(string, prefix) {
 function mapRow(row) {
 	openfisca = openfiscaMap[row.name];
 
-	if (! openfisca)
-		throw new ReferenceError('No mapping found for "' + row.name + '". Please add it to ' + OPENFISCA_MAP_FILENAME);
+	if (! openfisca) {
+		console.error('No mapping found for[35m', row.name, '[0m. Content will be dropped until you add it to', OPENFISCA_MAP_FILENAME);
+		return;
+	}
 
 	if (openfisca.input)
 		this.input_variables[openfisca.input] = parseNumber(row.positiveAmount);
