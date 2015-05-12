@@ -71,7 +71,7 @@ var currentStateAndTagNameToNextState = {
 
 var stateHandlers = [
 	{
-		matcher: /^period$/,
+		name: 'period',
 		handler: function(text) {
 			var parts = text.match(/Période du (\d{2})\/(\d{2})\/(\d{4})/);
 			if (parts)
@@ -79,19 +79,19 @@ var stateHandlers = [
 		}
 	},
 	{
-		matcher: /^payroll$/,
+		name: 'payroll',
 		handler: function(text) {
 			buffer.data = [];
 		}
 	},
 	{
-		matcher: /^tax$/,
+		name: 'tax',
 		handler: function(text) {
 			buffer.data[buffer.data.length] = {};
 		}
 	},
 	{
-		matcher: /^tax\./,
+		regexp: /^tax\./,
 		handler: function(text) {
 			var property = state.name.match(/tax\.(.+)/)[1];
 			buffer.data[buffer.data.length - 1][property] = buffer.data[buffer.data.length - 1][property] || '';
@@ -99,7 +99,7 @@ var stateHandlers = [
 		}
 	},
 	{
-		matcher: /^_/,
+		regexp: /^_/,
 		handler: function(text) {
 			// underscore-prefixed states are garbage, throw content away
 		}
@@ -108,7 +108,8 @@ var stateHandlers = [
 
 function handles(text) {
 	return function(stateHandler) {	// currying for iteration
-		if (stateHandler.matcher.exec(state.name)) {
+		if (stateHandler.name == state.name
+			|| (stateHandler.regexp && stateHandler.regexp.exec(state.name))) {
 			stateHandler.handler(text);
 			return true;
 		}
