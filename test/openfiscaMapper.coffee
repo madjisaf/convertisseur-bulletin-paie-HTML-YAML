@@ -58,3 +58,18 @@ describe 'Mapper', ->
 
 		it 'should negate numbers if requested', ->
 			mapper.parseNumber('1 689,90', '-').should.equal -1689.90
+
+
+	describe 'mapRow', ->
+		target = null
+
+		beforeEach ->
+			target = { input_variables: {} }
+
+		it 'should map an input variable to the matching OpenFisca input variable', ->
+			mapper.mapRow.bind(target)({ name: 'Salaire mensuel' })
+			target.input_variables.should.have.property 'salaire_de_base'
+
+		it 'should map an input variable with end notes to the matching OpenFisca input variable', ->
+			mapper.mapRow.bind(target)({ name: 'Salaire mensuel (1) (3) ' })
+			target.input_variables.should.have.property 'salaire_de_base'

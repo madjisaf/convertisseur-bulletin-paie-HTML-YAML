@@ -26,10 +26,17 @@ function parseNumber(string, prefix) {
 }
 
 function mapRow(row) {
-	openfisca = openfiscaMap[row.name];
+	if (! row.name) {
+		console.error('[33mRow was not properly parsed[0m. Content can not be mapped.');
+		return;
+	}
+
+	var name = cleanName(row.name);
+
+	openfisca = openfiscaMap[name];
 
 	if (! openfisca) {
-		console.error('No mapping found for[35m', row.name, '[0m. Content will be dropped until you add it to', OPENFISCA_MAP_FILENAME);
+		console.error('No mapping found for[35m', name, '[0m. Content will be dropped until you add it to', OPENFISCA_MAP_FILENAME);
 		return;
 	}
 
@@ -39,6 +46,10 @@ function mapRow(row) {
 		this.output_variables[openfisca.employer] = parseNumber(row.employerAmount, '-');
 	if (openfisca.employee)
 		this.output_variables[openfisca.employee] = parseNumber(row.employeeAmount, '-');
+}
+
+function cleanName(name) {
+	return name.replace(/(\s+\(\d+\))+\s*$/, '');
 }
 
 
