@@ -8,4 +8,4 @@ describe 'Parser on full text', ->
 	actual = parser.parse fs.readFileSync SOURCE
 
 	it 'should parse all payrolls', ->
-		actual.should.have.length 81
+		actual.should.have.length 80

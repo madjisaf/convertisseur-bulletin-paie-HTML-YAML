@@ -122,7 +122,7 @@ function handles(text) {
 
 var parser = new htmlparser.Parser({
 	onopentag: function(tagname, attribs) {
-		if (tagname == 'h3') {
+		if (tagname == 'h3' && state.name != 'name') {
 			if (state.name != 'root')
 				store();
 

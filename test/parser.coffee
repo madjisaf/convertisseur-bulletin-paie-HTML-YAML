@@ -85,3 +85,12 @@ describe 'Parser', ->
 				it 'should have the expected amount of rows', ->
 					target.data.should.have.length 32
 
+	describe 'malformed', ->
+		describe 'title', ->
+			actual = parser.parse fs.readFileSync(__dirname + '/assets/malformed-title.html')
+
+			it 'should parse one item', ->
+				actual.should.have.length 1
+
+			it 'should collate title parts', ->
+				actual[0].name.should.equal '1. Régularisation annuelle (entreprise assujettie à la contribution Fnal au taux de 0,5 %) (n° 2960) .'
