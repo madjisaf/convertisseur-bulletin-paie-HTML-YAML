@@ -39,7 +39,9 @@ function init() {
 function setState(tag) {
 	state.tag = tag;
 
-	var nextState = currentStateAndTagNameToNextState[state.name] && currentStateAndTagNameToNextState[state.name][state.tag];
+	var nextState = currentStateAndTagNameToNextState['*'][state.tag]
+		|| (   currentStateAndTagNameToNextState[state.name]
+			&& currentStateAndTagNameToNextState[state.name][state.tag]);
 	if (nextState) {
 		state.previous = state.name;
 		state.name = nextState;
@@ -48,7 +50,7 @@ function setState(tag) {
 
 
 var currentStateAndTagNameToNextState = {
-	root: { h3: 'name' },
+	'*': { h3: 'name' },
 	name: { dt: 'id' },
 	id: { dd: 'description' },
 	description: { strong: 'period' },
@@ -63,10 +65,7 @@ var currentStateAndTagNameToNextState = {
 	'tax.employeeAmount': { td: '_separationColumn' },
 	_separationColumn: { td: 'tax.employerBase' },
 	'tax.employerBase': { td: 'tax.employerAmount' },
-	'tax.employerAmount': {
-		tr: 'tax',
-		h3: 'name',
-	},
+	'tax.employerAmount': { tr: 'tax' },
 };
 
 var stateHandlers = [
@@ -119,8 +118,12 @@ function handles(text) {
 
 var parser = new htmlparser.Parser({
 	onopentag: function(tagname, attribs) {
-		if (tagname == 'h3' && state.name != 'root')
-			store();
+		if (tagname == 'h3') {
+			if (state.name != 'root')
+				store();
+
+			buffer = {};
+		}
 
 		setState(tagname);
 
