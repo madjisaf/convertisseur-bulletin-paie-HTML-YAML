@@ -1,5 +1,7 @@
 var htmlparser = require('htmlparser2');
 
+var deepTrim = require('../lib/deepTrim.js');
+
 
 var result,
 	buffer,
@@ -11,23 +13,6 @@ function store() {
 		buffer.index = debug.h3;
 
 	result.push(deepTrim(buffer));
-}
-
-function deepTrim(object) {
-	for (var key in object) {
-		if (object.hasOwnProperty(key)) {
-			switch (typeof object[key]) {
-				case 'string':
-					object[key] = object[key].replace(/\s+/g, ' ').trim();
-					break;
-				case 'object':
-					object[key] = deepTrim(object[key]);
-					break;
-			}
-		}
-	}
-
-	return object;
 }
 
 function init() {
