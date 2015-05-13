@@ -18,17 +18,11 @@ describe 'Parser', ->
 			actual.should.not.have.property '_separationColumn'
 
 		describe 'payroll', ->
-			target = null
-
-			before ->
-				target = actual.data
-
 			it 'should have the expected amount of rows', ->
-				target.should.have.length 29
+				actual.data.should.have.length 29
 
 			describe 'base salary', ->
-				before ->
-					target = actual.data[0]
+				target = actual.data[0]
 
 				it 'should have proper name', ->
 					target.name.should.equal 'Salaire mensuel'
@@ -37,8 +31,7 @@ describe 'Parser', ->
 					target.positiveAmount.should.equal '12 900,00'
 
 			describe 'tax', ->
-				before ->
-					target = actual.data[2]
+				target = actual.data[2]
 
 				it 'should have proper name', ->
 					target.name.should.equal 'Ass. maladie-solid. autonomie sur brut'
