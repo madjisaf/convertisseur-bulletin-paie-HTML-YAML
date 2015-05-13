@@ -72,3 +72,16 @@ describe 'Parser', ->
 		describe 'first item', ->
 			shouldBeFirstItem actual[0]
 
+		describe 'second item', ->
+			target = actual[1]
+
+			it 'should have a name', ->
+				target.name.should.equal '4. Taux de cotisation différents sur tranches B et C (n° 5382).'
+
+			it 'should have an id', ->
+				target.id.should.equal '25006'
+
+			describe 'payroll', ->
+				it 'should have the expected amount of rows', ->
+					target.data.should.have.length 32
+
