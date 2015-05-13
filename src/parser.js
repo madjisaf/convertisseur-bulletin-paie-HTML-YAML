@@ -39,22 +39,22 @@ function setState(tag) {
 
 
 var currentStateAndTagNameToNextState = {
-	'*': { h3: 'name' },
-	name: { dt: 'id' },
-	id: { dd: 'description' },
-	description: { strong: 'period' },
-	period: { tbody: '_malformedHeader' },
-	_malformedHeader: { tbody: 'payroll' },
-	payroll: { tr: 'tax' },
-	tax: { td: 'tax.name' },
-	'tax.name': { td: 'tax.base' },
-	'tax.base': { td: 'tax.employeeBase' },
-	'tax.employeeBase': { td: 'tax.positiveAmount' },
-	'tax.positiveAmount': { td: 'tax.employeeAmount' },
-	'tax.employeeAmount': { td: '_separationColumn' },
-	_separationColumn: { td: 'tax.employerBase' },
-	'tax.employerBase': { td: 'tax.employerAmount' },
-	'tax.employerAmount': { tr: 'tax' },
+	'*'						: { h3		: 'name'				},
+	name					: { dt		: 'id'					},
+	id						: { dd		: 'description'			},
+	description				: { strong	: 'period'				},
+	period					: { tbody	: '_malformedHeader'	},
+	_malformedHeader		: { tbody	: 'payroll'				},
+	payroll					: { tr		: 'tax'					},
+	tax						: { td		: 'tax.name'			},
+	'tax.name'				: { td		: 'tax.base'			},
+	'tax.base'				: { td		: 'tax.employeeBase'	},
+	'tax.employeeBase'		: { td		: 'tax.positiveAmount'	},
+	'tax.positiveAmount'	: { td		: 'tax.employeeAmount'	},
+	'tax.employeeAmount'	: { td		: '_separationColumn'	},
+	_separationColumn		: { td		: 'tax.employerBase'	},
+	'tax.employerBase'		: { td		: 'tax.employerAmount'	},
+	'tax.employerAmount'	: { tr		: 'tax'					},
 };
 
 var stateHandlers = [
