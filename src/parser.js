@@ -123,6 +123,8 @@ var parser = new htmlparser.Parser({
 			store();
 
 		setState(tagname);
+
+		if (process.env.DEBUG) console.log('<' + tagname + '>\t\t' + state.name);
 	},
 	ontext: function(text) {
 		if (! stateHandlers.some(handles(text))) {
