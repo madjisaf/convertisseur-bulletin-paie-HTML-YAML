@@ -7,6 +7,9 @@ var result,
 	debug = {};
 
 function store() {
+	if (process.env.DEBUG)
+		buffer.index = debug.h3;
+
 	result.push(deepTrim(buffer));
 }
 
@@ -129,12 +132,11 @@ var parser = new htmlparser.Parser({
 		setState(tagname);
 
 		if (process.env.DEBUG) {
-			if (! debug[tagname])
-				debug[tagname] = 0;
+			var tagCount = debug[tagname] || 0;
+			tagCount++;
 
-			debug[tagname]++;
-
-			console.error('<' + tagname + '>\t\t' + state.name + '\t\t' + debug[tagname]);
+			console.error('<' + tagname + '>\t\t' + state.name + '\t\t' + tagCount);
+			debug[tagname] = tagCount;
 		}
 	},
 	ontext: function(text) {
