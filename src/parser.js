@@ -3,7 +3,8 @@ var htmlparser = require('htmlparser2');
 
 var result,
 	buffer,
-	state;
+	state,
+	debug = {};
 
 function store() {
 	result.push(deepTrim(buffer));
@@ -127,7 +128,14 @@ var parser = new htmlparser.Parser({
 
 		setState(tagname);
 
-		if (process.env.DEBUG) console.log('<' + tagname + '>\t\t' + state.name);
+		if (process.env.DEBUG) {
+			if (! debug[tagname])
+				debug[tagname] = 0;
+
+			debug[tagname]++;
+
+			console.error('<' + tagname + '>\t\t' + state.name + '\t\t' + debug[tagname]);
+		}
 	},
 	ontext: function(text) {
 		if (! stateHandlers.some(handles(text))) {
@@ -146,6 +154,10 @@ exports.parse = function parse(data) {
 	parser.write(data);
 	parser.end();
 	store();
+
+	if (process.env.DEBUG) {
+		console.error('Parsed', debug);
+	}
 
 	return result;
 }
