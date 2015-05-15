@@ -1,5 +1,44 @@
-Salaire mensuel:
-  input: salaire_de_base
+Apec:
+  employer: apec_employeur
+  employee: apec_salarie
+Accid. travail:
+  employer: accident_du_travail
+Alloc. fam.:
+  employer: famille
+Ass. chômage:
+  employer: chomage_employeur
+  employee: chomage_salarie
 Ass. maladie-solid. autonomie sur brut:
-  employer: contribution_solidarite_autonomie
-  employee: contribution_exceptionnelle_solidarite
+  employer: mmid_employeur
+  employee: mmid_salarie
+Ass. vieillesse:
+  employer: viellesse_plafonnee_employeur
+  employee: viellesse_plafonnee_salarie
+Ass. vieillesse sur brut:
+  employer: viellesse_deplafonnee_employeur
+  employee: viellesse_deplafonnee_salarie
+CET:
+  employer: cotisation_exceptionnelle_temporaire_employeur
+  employee: cotisation_employeeexceptionnelle_temporaire_salarie
+COTISATIONS PATRONALES:
+  employer: cotisations_employeur
+CRDS:
+  employee: crds
+CSG déductible:
+  employee: csg_deductible_salaire
+CSG non déductible:
+  employee: csg_imposable_salaire
+Forfait social:
+  employee: forfait_social
+Fnal:
+  employer: fnal
+FNGS:
+  employer: ags
+NET FISCAL:
+  employee: salaire_imposable
+NET A PAYER:
+  employee: salaire_net_a_payer
+Salaire mensuel 35 h:
+  input: salaire_de_base
+Taxe transport:
+  employer: versement_transport
