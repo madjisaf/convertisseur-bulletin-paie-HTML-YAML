@@ -5,6 +5,8 @@ Accid. travail:
   employer: accident_du_travail
 Alloc. fam.:
   employer: famille
+Alloc. familiales:
+  employer: famille
 Ass. chômage:
   employer: chomage_employeur
   employee: chomage_salarie
