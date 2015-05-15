@@ -17,11 +17,15 @@ Ass. vieillesse:
 Ass. vieillesse sur brut:
   employer: viellesse_deplafonnee_employeur
   employee: viellesse_deplafonnee_salarie
+AUTRES COTIS. SAL.:
+  ignore: true
 CET:
   employer: cotisation_exceptionnelle_temporaire_employeur
   employee: cotisation_employeeexceptionnelle_temporaire_salarie
 COTISATIONS PATRONALES:
   employer: cotisations_employeur
+COTIS. SAL. DEDUCTIBLES:
+  ignore: true
 CRDS:
   employee: crds
 CSG déductible:
