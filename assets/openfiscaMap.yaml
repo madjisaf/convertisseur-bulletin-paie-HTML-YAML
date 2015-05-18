@@ -23,7 +23,7 @@ AUTRES COTIS. SAL.:
   ignore: true
 CET:
   employer: cotisation_exceptionnelle_temporaire_employeur
-  employee: cotisation_employeeexceptionnelle_temporaire_salarie
+  employee: cotisation_exceptionnelle_temporaire_salarie
 COTISATIONS PATRONALES:
   employer: cotisations_employeur
 COTIS. SAL. DEDUCTIBLES:
