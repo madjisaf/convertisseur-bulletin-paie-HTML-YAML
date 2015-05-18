@@ -44,7 +44,11 @@ NET FISCAL:
   employee: salaire_imposable
 NET A PAYER:
   employee: salaire_net_a_payer
+Salaire mensuel:
+  input: salaire_de_base
 Salaire mensuel 35 h:
+  input: salaire_de_base
+Salaire mensuel 35 h en espèce:
   input: salaire_de_base
 Taxe transport:
   employer: versement_transport
