@@ -57,6 +57,12 @@ var currentStateAndTagNameToNextState = {
 	'tax.employerAmount'	: { tr		: 'tax'					},
 };
 
+
+function handleTaxCell(property, text) {
+	buffer.data[buffer.data.length - 1][property] = buffer.data[buffer.data.length - 1][property] || '';
+	buffer.data[buffer.data.length - 1][property] += text;
+}
+
 var stateHandlers = [
 	{
 		name: 'period',
@@ -79,11 +85,22 @@ var stateHandlers = [
 		}
 	},
 	{
+		name: 'tax.name',
+		handler: function(text) {
+			var totalAmountParts = text.match(/([A-Z ]+)\s+:\s+([0-9\s,]+)/);
+			if (totalAmountParts) {
+				handleTaxCell('name', totalAmountParts[1]);
+				handleTaxCell('employeeAmount', totalAmountParts[2]);
+			} else {
+				handleTaxCell('name', text);
+			}
+		}
+	},
+	{
 		regexp: /^tax\./,
 		handler: function(text) {
 			var property = state.name.match(/tax\.(.+)/)[1];
-			buffer.data[buffer.data.length - 1][property] = buffer.data[buffer.data.length - 1][property] || '';
-			buffer.data[buffer.data.length - 1][property] += text;
+			handleTaxCell(property, text);
 		}
 	},
 	{

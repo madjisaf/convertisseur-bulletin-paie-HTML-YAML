@@ -94,3 +94,25 @@ describe 'Parser', ->
 
 			it 'should collate title parts', ->
 				actual[0].name.should.equal '1. Régularisation annuelle (entreprise assujettie à la contribution Fnal au taux de 0,5 %) (n° 2960) .'
+
+		describe 'row', ->
+			actual = parser.parse fs.readFileSync(__dirname + '/assets/item.html')
+
+			describe 'with amounts after a colon', ->
+				target = actual[0].data[28]	# 'NET A PAYER : 10 166,10'
+
+				it 'should clean names', ->
+					target.name.should.equal 'NET A PAYER'
+
+				it 'should parse total amounts', ->
+					target.employeeAmount.should.equal '10 166,10'
+
+				describe 'with footnotes', ->
+					before ->
+						target = actual[0].data[27]	# 'NET FISCAL : 10 601,51 (3)'
+
+					it 'should append footnotes to name', ->
+						target.name.should.equal 'NET FISCAL (3)'
+
+					it 'should parse total amounts', ->
+						target.employeeAmount.should.equal '10 601,51'
