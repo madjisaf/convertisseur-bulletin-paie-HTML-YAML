@@ -18,8 +18,14 @@ describe 'Parser', ->
 			actual.should.not.have.property '_separationColumn'
 
 		describe 'payroll', ->
+			EXPECTED_TOTAL = 29
+
 			it 'should have the expected amount of rows', ->
-				actual.data.should.have.length 29
+				actual.data.should.have.length EXPECTED_TOTAL
+
+			it 'should parse all rows', ->
+				actual.data.forEach (row, index) ->
+					row.name.should.not.equal '', index
 
 			describe 'base salary', ->
 				target = actual.data[0]
