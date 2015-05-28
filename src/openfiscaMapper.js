@@ -14,7 +14,8 @@ function toOpenFisca(item) {
 
 	item.data.forEach(mapRow.bind(result));
 
-	delete item.data;
+	delete result.data;
+	delete result.id;
 
 	return result;
 }

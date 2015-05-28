@@ -29,8 +29,8 @@ describe 'Mapper', ->
 		it 'should have a name', ->
 			actual.name.should.equal NAME
 
-		it 'should have an id', ->
-			actual.id.should.equal ID
+		it 'should have no id', ->
+			actual.should.not.have.property 'id'
 
 		it 'should have a period', ->
 			actual.period.should.equal PERIOD
