@@ -73,3 +73,8 @@ describe 'Mapper', ->
 		it 'should map an input variable with end notes to the matching OpenFisca input variable', ->
 			mapper.mapRow.bind(target)({ name: 'Salaire mensuel (1) (3) ' })
 			target.input_variables.should.have.property 'salaire_de_base'
+
+		it 'should sum elements with same targets', ->
+			mapper.mapRow.bind(target)({ name: 'Salaire mensuel', positiveAmount: 1 })
+			mapper.mapRow.bind(target)({ name: 'Salaire mensuel 35 h', positiveAmount: 2 })
+			target.input_variables.salaire_de_base.should.equal 3

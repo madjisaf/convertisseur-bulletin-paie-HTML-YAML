@@ -40,12 +40,16 @@ function mapRow(row) {
 		return;
 	}
 
-	if (openfisca.input)
-		this.input_variables[openfisca.input] = parseNumber(row.positiveAmount);
-	if (openfisca.employer)
-		this.output_variables[openfisca.employer] = parseNumber(row.employerAmount, '-');
-	if (openfisca.employee)
-		this.output_variables[openfisca.employee] = parseNumber(row.employeeAmount, '-');
+	if (openfisca.input) {
+		this.input_variables[openfisca.input] = this.input_variables[openfisca.input] || 0;
+		this.input_variables[openfisca.input] += parseNumber(row.positiveAmount);
+	} if (openfisca.employer) {
+		this.output_variables[openfisca.employer] = this.output_variables[openfisca.employer] || 0;
+		this.output_variables[openfisca.employer] += parseNumber(row.employerAmount, '-');
+	} if (openfisca.employee) {
+		this.output_variables[openfisca.employee] = this.output_variables[openfisca.employee] || 0;
+		this.output_variables[openfisca.employee] += parseNumber(row.employeeAmount, '-');
+	}
 }
 
 function cleanName(name) {
