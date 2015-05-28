@@ -12,6 +12,7 @@ var parser = require('./src/parser'),
 var SOURCE = path.join(__dirname, '/assets/source.html'),
 	TARGET_DIR = path.join(__dirname, '/dist');
 
+var requestedPayrolls = Array.prototype.slice.call(process.argv, 2);
 
 try {
 	fs.mkdirSync(TARGET_DIR);
@@ -20,8 +21,16 @@ try {
 	// if it doesn't, all subsequent writes will complain anyway
 }
 
-parser.parse(fs.readFileSync(process.argv[2] || SOURCE))
-	  .forEach(function(payroll) {
+
+var payrolls = parser.parse(fs.readFileSync(SOURCE));
+
+if (requestedPayrolls.length) {
+	payrolls = payrolls.filter(function(payroll) {
+		return requestedPayrolls.indexOf(payroll.id) > -1;
+	});
+}
+
+payrolls.forEach(function(payroll) {
 	  	var targetPath = path.join(TARGET_DIR, payroll.id + '.yaml');
 
 	  	fs.writeFile(targetPath, yaml.safeDump(mapper.toOpenFisca(payroll)), function(err) {
