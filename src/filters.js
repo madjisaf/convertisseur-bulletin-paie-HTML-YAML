@@ -27,8 +27,8 @@ exports.postProcess = function(payroll) {
     }
 
     var defaultValue = variablePostProcessing.defaultValue;
-    if (defaultValue && !(variableName in payroll.output_variables)) {
-      payroll.output_variables[variableName] = defaultValue;
+    if (defaultValue && !(variableName in payroll.input_variables)) {
+      payroll.input_variables[variableName] = defaultValue;
     }
   });
   return payroll;
