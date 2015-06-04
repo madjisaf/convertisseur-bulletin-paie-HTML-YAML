@@ -44,8 +44,8 @@ describe 'Mapper', ->
 
 		describe 'output variables', ->
 			it 'should have employer amount', ->
-				actual.output_variables.should.have.property 'mmid_employeur'
-				actual.output_variables.mmid_employeur.should.equal -1689.90
+				actual.output_variables.should.have.property 'mmida_employeur'
+				actual.output_variables.mmida_employeur.should.equal -1689.90
 
 			it 'should have employee amount', ->
 				actual.output_variables.should.have.property 'mmid_salarie'
