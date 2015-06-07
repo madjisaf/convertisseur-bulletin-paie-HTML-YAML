@@ -9,4 +9,4 @@ taux_accident_travail:
 taux_versement_transport:
   defaultValue: 0.027
 type_sal:
-  defaultValue: 0 # Should also be set to 0 or 1.
+  defaultValue: 1 # Should also be set to 0 or 1.

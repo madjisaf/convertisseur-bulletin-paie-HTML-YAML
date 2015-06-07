@@ -39,7 +39,8 @@ CET:
   employer: cotisation_exceptionnelle_temporaire_employeur
   employee: cotisation_exceptionnelle_temporaire_salarie
 COTISATIONS PATRONALES:
-  employer: cotisations_employeur
+  ignore: true
+#  employer: cotisations_employeur
 COTIS. SAL. DEDUCTIBLES:
   ignore: true
 CRDS:
@@ -48,6 +49,10 @@ CSG déductible:
   employee: csg_deductible_salaire
 CSG non déductible:
   employee: csg_imposable_salaire
+Exonération cotisations SS ZRR:
+  employer: exoneration_cotisations_employeur_zrr
+Exonération cotisations SS ZRR ZRU:
+  employer: exoneration_cotisations_employeur_zrr
 Forfait social:
   employer: forfait_social
 Fnal:
@@ -62,6 +67,9 @@ NET A PAYER:
   employee: salaire_net_a_payer
 REMUNERATION BRUTE:
   ignore: true
+Retraite compl.:
+  employer: arrco_employeur
+  employee: arrco_salarie
 Retraite compl. T1:
   employer: arrco_employeur
   employee: arrco_salarie
@@ -75,14 +83,14 @@ Retraite complémentaire TA:
   employer: arrco_employeur
   employee: arrco_salarie
 Retraite cadres TB:
-  employer: arrco_employeur
+  employer: agirc_employeur
   employee: agirc_salarie
 Retraite cadres TC:
   employer: agirc_employeur
   employee: agirc_salarie
 Retraite TB GMP:
-  employer: agirc_employeur
-  employee: agirc_salarie
+  employer: agirc_gmp_employeur
+  employee: agirc_gmp_salarie
 Salaire mensuel:
   input: salaire_de_base
 Salaire mensuel 35 h:
