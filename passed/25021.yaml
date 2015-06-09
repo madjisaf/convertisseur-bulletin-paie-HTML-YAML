@@ -1,0 +1,29 @@
+# BAD Parsing
+name: '3. Entreprise assujettie à la contribution Fnal au taux de 0,1 % (n° 2930).'
+description: 'Salarié non cadre travaillant dans une entreprise de moins de 20 salariés. Données communes : n° 25000.'
+period: 'month:2015-01'
+absolute_error_margin: .007
+input_variables:
+  salaire_de_base: 1668.37
+  effectif_entreprise: 19
+  taux_accident_travail: 0.02
+  taux_versement_transport: 0.027
+  type_sal: 0
+output_variables:
+  vieillesse_plafonnee_employeur: -141.81
+  vieillesse_plafonnee_salarie: -114.28
+  vieillesse_deplafonnee_employeur: -30.03
+  vieillesse_deplafonnee_salarie: -5.01
+  IGNORE_famille: -57.56
+  accident_du_travail: -33.37
+  chomage_employeur: -66.73
+  chomage_salarie: -40.04
+  versement_transport: -45.05
+  fnal: -1.67
+  ags: -5.01
+  agff_employeur: -20.02
+  agff_salarie: -13.35
+  csg_deductible_salaire: -83.6
+  crds_salaire: -8.2
+  salaire_imposable: 1347.86
+  salaire_net_a_payer: 1300.32

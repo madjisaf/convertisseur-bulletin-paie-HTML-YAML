@@ -1,0 +1,32 @@
+name: '1 . Rémunération ne dépassant pas 1,4 Smic (n° 4168).'
+description: "Salarié non cadre à temps plein ouvrant droit à l'exonération de cotisations patronales de sécurité sociale pour emploi en zone franche urbaine. Le taux d'exonération (T) est égal aux taux des cotisations patronales d'assurances sociales (maladie, maternité, invalidité, vieillesse) et d'allocations familiales, majorés des taux de la contribution au Fonds national d'aide au logement et du versement de transport, soit au 1er janvier 2015 : T = 12,80 + 8,50 + 1,80 + 3,45 + 0,50 + 2,70 = 29,75 %. Le coefficient d'exonération est en principe arrondi à trois décimales, au millième le plus proche (soit, ici : 0,298). Toutefois, si le résultat est supérieur à la somme des taux ci-dessus, il est pris en compte pour la valeur de cette somme. Le coefficient est donc ici de 0,2975. L'application de l'exonération exclut celle de la réduction générale de cotisations patronales. Données communes : n° 25000."
+period: 'month:2015-01'
+input_variables:
+  salaire_de_base: 1500
+  effectif_entreprise: 25
+  taux_accident_travail: 0.02
+  taux_versement_transport: 0.027
+  type_sal: 0
+  contrat_de_travail_debut: 2014-12-01
+  zone_franche_urbaine: true
+output_variables:
+  vieillesse_plafonnee_employeur: -127.5
+  vieillesse_plafonnee_salarie: -102.75
+  vieillesse_deplafonnee_employeur: -27
+  vieillesse_deplafonnee_salarie: -4.5
+  IGNORE_famille: -51.75
+  IGNORE_exoneration_cotisations_employeur_zfu: 446.25  # Problème cotisation famille
+  accident_du_travail: -30
+  chomage_employeur: -60
+  chomage_salarie: -36
+  versement_transport: -40.5
+  fnal: -7.5
+  ags: -4.5
+  arrco_employeur: -69.75
+  arrco_salarie: -46.5
+  agff_employeur: -18
+  agff_salarie: -12
+  csg_deductible_salaire: -75.16
+  crds_salaire: -7.37
+  salaire_imposable: 1211.84
+  salaire_net_a_payer: 1169.1

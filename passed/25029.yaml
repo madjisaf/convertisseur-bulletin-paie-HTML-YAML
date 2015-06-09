@@ -1,0 +1,29 @@
+name: '2 . Rémunération supérieure à 1,4 Smic (n° 4168).'
+description: "Salarié non cadre à temps plein ouvrant droit à l'exonération de cotisations patronales de sécurité sociale pour emploi en zone franche urbaine. La rémunération dépassant la limite de 140 % du Smic, l'exonération doit être calculée selon un barème dégressif. Coefficient : (0,2975/0,6) x [(2 x 9,61 x 1,4 x 151,67 / 2 123,38) - 1,4] = 0,259 . L'application de l'exonération exclut celle de la réduction générale de cotisations patronales. Données communes : n° 25000."
+period: 'month:2015-01'
+input_variables:
+  salaire_de_base: 2123.38
+  effectif_entreprise: 25
+  taux_accident_travail: 0.02
+  taux_versement_transport: 0.027
+  contrat_de_travail_debut: 2014-12-01
+  type_sal: 0
+  zone_franche_urbaine: true
+output_variables:
+  vieillesse_plafonnee_employeur: -180.49
+  vieillesse_plafonnee_salarie: -145.45
+  vieillesse_deplafonnee_employeur: -38.22
+  vieillesse_deplafonnee_salarie: -6.37
+  IGNORE_famille: -73.26
+  IGNORE_exoneration_cotisations_employeur_zfu: 549.96  # Problème cotisation famille
+  accident_du_travail: -42.47
+  chomage_employeur: -84.94
+  chomage_salarie: -50.96
+  versement_transport: -57.33
+  fnal: -10.62
+  ags: -6.37
+  agff_employeur: -25.48
+  agff_salarie: -16.99
+  csg_deductible_salaire: -106.4
+  crds_salaire: -10.43
+  salaire_imposable: 1715.46

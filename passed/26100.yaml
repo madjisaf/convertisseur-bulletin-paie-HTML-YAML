@@ -1,0 +1,34 @@
+name: 1 . Début de contrat (n° 14100).
+description: "Salarié non cadre titulaire d'un contrat à durée déterminée de 12 mois conclu pour accroissement temporaire d'activité de l'entreprise. Le contrat a commencé, en cours de mois, le 6 janvier 2015. Le nombre d'heures pour le mois complet s'élève à 154 h (1). Les heures à rémunérer sont au nombre de 133 (7 x 19). Le bulletin de paie de janvier 2015 fait apparaître le salaire mensuel complet, puis une déduction correspondant aux heures non travaillées, soit 154 - 133 = 21 h. Données communes : n° 25000."
+period: 'month:2015-01'
+absolute_error_margin: .007
+input_variables:
+  salaire_de_base: 1550.2 - 211.47
+  effectif_entreprise: 25
+  taux_accident_travail: 0.02
+  taux_versement_transport: 0.027
+  type_sal: 0
+  contrat_de_travail_debut: "2015-01-06"
+  contrat_de_travail_duree: 1
+  allegement_fillon_mode_recouvrement: 1
+output_variables:
+  vieillesse_plafonnee_employeur: -113.79
+  vieillesse_plafonnee_salarie: -91.7
+  vieillesse_deplafonnee_employeur: -24.1
+  vieillesse_deplafonnee_salarie: -4.02
+  IGNORE_famille: -46.19
+  accident_du_travail: -26.77
+  IGNORE_allegement_fillon: 319.02
+  chomage_employeur: -53.55
+  chomage_salarie: -32.13
+  versement_transport: -36.15
+  fnal: -6.69
+  ags: -4.02
+  arrco_employeur: -62.25
+  arrco_salarie: -41.5
+  agff_employeur: -16.06
+  agff_salarie: -10.71
+  csg_deductible_salaire: -67.08
+  crds_salaire: -6.58
+  salaire_imposable: 1081.55
+  salaire_net_a_payer: 1043.40

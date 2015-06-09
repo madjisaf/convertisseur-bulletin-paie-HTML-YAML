@@ -1,0 +1,41 @@
+name: "2 . Rémunération n'excédant pas la limite supérieure de la tranche B (n° 5382)."
+description: "Le montant de la tranche B est suffisant pour écarter l'application de la GMP, mais la tranche C n'est pas atteinte. Le salaire est trop élevé pour donner lieu à la réduction générale de cotisations patronales. Données communes : n° 25000."
+period: 'month:2015-01'
+absolute_error_margin: .1
+input_variables:
+  salaire_de_base: 3900.55
+  effectif_entreprise: 25
+  taux_accident_travail: 0.02
+  taux_versement_transport: 0.027
+  type_sal: 1
+output_variables:
+  mmida_employeur: -510.97
+  mmid_salarie: -29.25
+  vieillesse_plafonnee_employeur: -269.45
+  vieillesse_plafonnee_salarie: -217.15
+  vieillesse_deplafonnee_employeur: -70.21
+  vieillesse_deplafonnee_salarie: -11.7
+  famille: -204.78
+  accident_du_travail: -78.01
+  chomage_employeur: -156.02
+  chomage_salarie: -93.61
+  versement_transport: -105.31
+  fnal: -19.5
+  ags: -11.7
+  arrco_employeur: -147.41
+  arrco_salarie: -98.27
+  agirc_employeur: -93.15
+  agirc_salarie: -56.98
+  agff_employeur: -47.54
+  agff_salarie: -31.93
+  cotisation_exceptionnelle_temporaire_employeur: -8.58
+  cotisation_exceptionnelle_temporaire_salarie: -5.07
+  apec_employeur: -1.4
+  apec_salarie: -0.94
+  prevoyance_obligatoire_cadre: -47.55
+  forfait_social: -3.8
+  csg_deductible_salaire: -197.84
+  csg_imposable_salaire: -93.12
+  crds_salaire: -19.4
+  salaire_imposable: 3157.78
+  salaire_net_a_payer: 3045.26

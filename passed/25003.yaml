@@ -1,0 +1,43 @@
+name: 1 . Garantie minimale de points Agirc (n° 5390).
+description: "Salarié cadre dont le salaire brut mensuel est inférieur à 3 492,82 €, salaire charnière mensuel du premier trimestre 2015. Il donne donc lieu à l'application, pour le calcul de la cotisation de retraite complémentaire Agirc, du dispositif de garantie minimale de points (GMP). Dans cet exemple, la base TB est 3 300,00 - 3 170 = 130 €. Base GMP : 3 492,82 - 3 170 = 322,82 €, dont il convient de déduire la base TB (130), ce qui ramène la base GMP à 322,82 - 130 = 192,82 €. Le salaire est trop élevé pour donner lieu à la réduction générale de cotisations patronales. Données communes : n° 25000."
+period: 'month:2015-01'
+absolute_error_margin: .11
+input_variables:
+  salaire_de_base: 3300
+  effectif_entreprise: 25
+  taux_accident_travail: 0.02
+  taux_versement_transport: 0.027
+  type_sal: 1
+output_variables:
+  mmida_employeur: -432.3
+  mmid_salarie: -24.75
+  vieillesse_plafonnee_employeur: -269.45
+  vieillesse_plafonnee_salarie: -217.15
+  vieillesse_deplafonnee_employeur: -59.4
+  vieillesse_deplafonnee_salarie: -9.9
+  famille: -173.25
+  accident_du_travail: -66
+  chomage_employeur: -132
+  chomage_salarie: -79.2
+  versement_transport: -89.1
+  fnal: -16.5
+  ags: -9.9
+  arrco_employeur: -147.41
+  arrco_salarie: -98.27
+  agirc_employeur: -16.58
+  agirc_salarie: -10.14
+  agirc_gmp_employeur: -24.58
+  agirc_gmp_salarie: -15.04
+  agff_employeur: -39.73
+  agff_salarie: -26.53
+  cotisation_exceptionnelle_temporaire_employeur: -7.26
+  cotisation_exceptionnelle_temporaire_salarie: -4.29
+  apec_employeur: -1.19
+  apec_salarie: -0.79
+  prevoyance_obligatoire_cadre: -47.55
+  forfait_social: -3.8
+  csg_deductible_salaire: -167.78
+  csg_imposable_salaire: -78.96
+  crds_salaire: -16.45
+  salaire_imposable: 2646.16
+  salaire_net_a_payer: 2550.75

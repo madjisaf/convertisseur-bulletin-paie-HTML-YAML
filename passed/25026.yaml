@@ -1,0 +1,33 @@
+name: '2 . Rémunération supérieure à 1,5 Smic (n° 4127).'
+description: "Salarié non cadre à temps plein ouvrant droit à l'exonération de cotisations patronales de sécurité sociale pour embauche en zone de revitalisation rurale. La rémunération dépassant la limite de 150 % du Smic, l'exonération doit être calculée selon un barème dégressif. L'application de l'exonération exclut celle de la réduction générale de cotisations patronales. Données communes : n° 25000."
+period: 'month:2015-01'
+absolute_error_margin: .011
+input_variables:
+  salaire_de_base: 2250
+  effectif_entreprise: 25
+  taux_accident_travail: 0.02
+  taux_versement_transport: 0.027
+  type_sal: 0
+  contrat_de_travail_debut: 2015-01-01
+  zone_revitalisation_rurale: true
+output_variables:
+  vieillesse_plafonnee_employeur: -191.25
+  vieillesse_plafonnee_salarie: -154.13
+  vieillesse_deplafonnee_employeur: -40.5
+  vieillesse_deplafonnee_salarie: -6.75
+  IGNORE_famille: -77.63
+  exoneration_cotisations_employeur_zrr: 2250 * .2454  # Value edited by hand
+  accident_du_travail: -45
+  chomage_employeur: -90
+  chomage_salarie: -54
+  versement_transport: -60.75
+  fnal: -11.25
+  ags: -6.75
+  arrco_employeur: -104.63
+  arrco_salarie: -69.75
+  agff_employeur: -27
+  agff_salarie: -18
+  csg_deductible_salaire: -112.74
+  crds_salaire: -11.05
+  salaire_imposable: 1817.75
+  salaire_net_a_payer: 1753.64
