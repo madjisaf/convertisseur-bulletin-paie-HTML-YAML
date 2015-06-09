@@ -1,5 +1,7 @@
 effectif_entreprise:
   defaultValue: 25 # Something more than 20.
+allegement_fillon:
+  sign: "positive"
 salaire_imposable:
   sign: "positive"
 salaire_net_a_payer:

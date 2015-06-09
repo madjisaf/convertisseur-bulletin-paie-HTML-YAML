@@ -34,7 +34,7 @@ Ass. vieillesse sur brut:
 AUTRES COTIS. SAL.:
   ignore: true
 Avantage en nature:
-  employee: avantages_en_nature
+  employee: avantage_en_nature
 CET:
   employer: cotisation_exceptionnelle_temporaire_employeur
   employee: cotisation_exceptionnelle_temporaire_salarie
@@ -65,9 +65,14 @@ NET FISCAL:
   employee: salaire_imposable
 NET A PAYER:
   employee: salaire_net_a_payer
+Réduction cotisations SS:
+  employer: allegement_fillon
 REMUNERATION BRUTE:
   ignore: true
 Retraite compl.:
+  employer: arrco_employeur
+  employee: arrco_salarie
+Retraite complémentaire T1:
   employer: arrco_employeur
   employee: arrco_salarie
 Retraite compl. T1:
