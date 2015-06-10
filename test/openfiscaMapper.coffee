@@ -13,7 +13,7 @@ describe 'Mapper', ->
 			data	: [
 				{
 					name: 'Salaire mensuel'
-					positiveAmount: '12 900,00'
+					inputAmount: '12 900,00'
 				}, {
 					name: 'Ass. maladie-solid. autonomie sur brut'
 					base: '12 900,00'
@@ -78,8 +78,8 @@ describe 'Mapper', ->
 			target.input_variables.should.have.property 'salaire_de_base'
 
 		it 'should sum elements with same targets', ->
-			mapper.mapRow.bind(target)({ name: 'Salaire mensuel', positiveAmount: 1 })
-			mapper.mapRow.bind(target)({ name: 'Salaire mensuel 35 h', positiveAmount: 2 })
+			mapper.mapRow.bind(target)({ name: 'Salaire mensuel', inputAmount: 1 })
+			mapper.mapRow.bind(target)({ name: 'Salaire mensuel 35 h', inputAmount: 2 })
 			target.input_variables.salaire_de_base.should.equal 3
 
 		it 'should respect mapped sign', ->

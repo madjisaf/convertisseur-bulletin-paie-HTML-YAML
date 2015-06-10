@@ -34,7 +34,7 @@ describe 'Parser', ->
 					target.name.should.equal 'Salaire mensuel'
 
 				it 'should have proper amount', ->
-					target.positiveAmount.should.equal '12 900,00'
+					target.inputAmount.should.equal '12 900,00'
 
 			describe 'tax', ->
 				target = actual.data[2]

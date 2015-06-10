@@ -43,7 +43,7 @@ function mapRow(row) {
 
 	if (openfisca.input) {
 		this.input_variables[openfisca.input] = this.input_variables[openfisca.input] || 0;
-		this.input_variables[openfisca.input] += parseNumber(row.positiveAmount, openfisca.sign || '+');
+		this.input_variables[openfisca.input] += parseNumber(row.inputAmount, openfisca.sign || '+');
 	} if (openfisca.employer) {
 		this.output_variables[openfisca.employer] = this.output_variables[openfisca.employer] || 0;
 		this.output_variables[openfisca.employer] += parseNumber(row.employerAmount, openfisca.sign || '-');
