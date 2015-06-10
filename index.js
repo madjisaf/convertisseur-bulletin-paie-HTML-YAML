@@ -32,18 +32,18 @@ if (requestedPayrolls.length) {
 }
 
 payrolls.forEach(function(payroll) {
-	  	var targetPath = path.join(TARGET_DIR, payroll.id + '.yaml');
+	var targetPath = path.join(TARGET_DIR, payroll.id + '.yaml');
 
-			// Convert original payroll to OpenFisca variable names.
-			var convertedPayroll = mapper.toOpenFisca(payroll);
+	// Convert original payroll to OpenFisca variable names.
+	var convertedPayroll = mapper.toOpenFisca(payroll);
 
-			// Fix sign and set default value for some variables (see README).
-			convertedPayroll = filters.postProcess(convertedPayroll);
+	// Fix sign and set default value for some variables (see README).
+	convertedPayroll = filters.postProcess(convertedPayroll);
 
-	  	fs.writeFile(targetPath, yaml.safeDump(convertedPayroll), function(err) {
-	  		if (err)
-	  			throw err;
+	fs.writeFile(targetPath, yaml.safeDump(convertedPayroll), function(err) {
+		if (err)
+			throw err;
 
-	  		console.log('Wrote file', targetPath);
-	  	});
-	  });
+		console.log('Wrote file', targetPath);
+	});
+});
