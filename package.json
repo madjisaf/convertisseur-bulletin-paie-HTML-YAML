@@ -2,7 +2,8 @@
   "name": "memento-paie-parser",
   "dependencies": {
     "js-yaml": "^3.3.0",
-    "htmlparser2": "^3.8.2"
+    "htmlparser2": "^3.8.2",
+    "lodash": "^3.9.3"
   },
   "devDependencies": {
     "should": "^6.0.1",

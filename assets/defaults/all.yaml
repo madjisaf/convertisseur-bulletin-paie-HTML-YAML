@@ -1,0 +1,6 @@
+input_variables:
+  effectif_entreprise: 25 # Something more than 20.
+  taux_accident_travail: 0.02
+  taux_versement_transport: 0.027
+  type_sal: 1 # Should also be set to 0 or 1.
+output_variables:

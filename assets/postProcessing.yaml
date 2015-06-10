@@ -1,8 +1,0 @@
-effectif_entreprise:
-  defaultValue: 25 # Something more than 20.
-taux_accident_travail:
-  defaultValue: 0.02
-taux_versement_transport:
-  defaultValue: 0.027
-type_sal:
-  defaultValue: 1 # Should also be set to 0 or 1.

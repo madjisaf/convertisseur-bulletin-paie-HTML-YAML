@@ -7,8 +7,7 @@ var fs = require('fs'),
 var yaml = require('js-yaml');
 
 var parser = require('./src/parser'),
-	mapper = require('./src/openfiscaMapper'),
-	filters = require('./src/filters');
+	mapper = require('./src/openfiscaMapper');
 
 var SOURCE = path.join(__dirname, '/assets/source.html'),
 	TARGET_DIR = path.join(__dirname, '/dist');
@@ -36,9 +35,6 @@ payrolls.forEach(function(payroll) {
 
 	// Convert original payroll to OpenFisca variable names.
 	var convertedPayroll = mapper.toOpenFisca(payroll);
-
-	// Fix sign and set default value for some variables (see README).
-	convertedPayroll = filters.postProcess(convertedPayroll);
 
 	fs.writeFile(targetPath, yaml.safeDump(convertedPayroll), function(err) {
 		if (err)

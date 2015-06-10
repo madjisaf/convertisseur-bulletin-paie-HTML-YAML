@@ -51,6 +51,11 @@ describe 'Mapper', ->
 				actual.output_variables.should.have.property 'mmid_salarie'
 				actual.output_variables.mmid_salarie.should.equal -96.75
 
+		describe 'input variables', ->
+			it 'should contain default values', ->
+				actual.input_variables.should.have.property 'effectif_entreprise'
+				actual.input_variables.effectif_entreprise.should.equal 25
+
 
 	describe 'parseNumber', ->
 		it 'should parse integers', ->

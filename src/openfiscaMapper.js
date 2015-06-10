@@ -1,16 +1,18 @@
 var fs = require('fs');
 
-var yaml = require('js-yaml');
+var yaml = require('js-yaml'),
+	_ = require('lodash');
 
 var OPENFISCA_MAP_FILENAME = 'openfiscaMap.yaml',
-	openfiscaMap = yaml.safeLoad(fs.readFileSync(__dirname + '/../assets/' + OPENFISCA_MAP_FILENAME));
+	openfiscaMap = yaml.safeLoad(fs.readFileSync(__dirname + '/../assets/' + OPENFISCA_MAP_FILENAME)),
+	defaults = yaml.safeLoad(fs.readFileSync(__dirname + '/../assets/defaults/all.yaml'));
 
 
 function toOpenFisca(item) {
-	var result = item;
+	var result = _.clone(item);
 
-	result.input_variables = {};
-	result.output_variables = {};
+	result.input_variables = _.merge({}, defaults.input_variables);
+	result.output_variables = _.merge({}, defaults.output_variables);
 
 	item.data.forEach(mapRow.bind(result));
 
