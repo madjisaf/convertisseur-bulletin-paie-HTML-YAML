@@ -64,7 +64,10 @@ describe 'Mapper', ->
 		target = null
 
 		beforeEach ->
-			target = { input_variables: {} }
+			target = {
+				input_variables: {},
+				output_variables: {}
+			}
 
 		it 'should map an input variable to the matching OpenFisca input variable', ->
 			mapper.mapRow.bind(target)({ name: 'Salaire mensuel' })
@@ -78,3 +81,7 @@ describe 'Mapper', ->
 			mapper.mapRow.bind(target)({ name: 'Salaire mensuel', positiveAmount: 1 })
 			mapper.mapRow.bind(target)({ name: 'Salaire mensuel 35 h', positiveAmount: 2 })
 			target.input_variables.salaire_de_base.should.equal 3
+
+		it 'should respect mapped sign', ->
+			mapper.mapRow.bind(target)({ name: 'NET FISCAL', employeeAmount: 1 })
+			target.output_variables.salaire_imposable.should.equal 1

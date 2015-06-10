@@ -43,13 +43,13 @@ function mapRow(row) {
 
 	if (openfisca.input) {
 		this.input_variables[openfisca.input] = this.input_variables[openfisca.input] || 0;
-		this.input_variables[openfisca.input] += parseNumber(row.positiveAmount);
+		this.input_variables[openfisca.input] += parseNumber(row.positiveAmount, openfisca.sign || '+');
 	} if (openfisca.employer) {
 		this.output_variables[openfisca.employer] = this.output_variables[openfisca.employer] || 0;
-		this.output_variables[openfisca.employer] += parseNumber(row.employerAmount, '-');
+		this.output_variables[openfisca.employer] += parseNumber(row.employerAmount, openfisca.sign || '-');
 	} if (openfisca.employee) {
 		this.output_variables[openfisca.employee] = this.output_variables[openfisca.employee] || 0;
-		this.output_variables[openfisca.employee] += parseNumber(row.employeeAmount, '-');
+		this.output_variables[openfisca.employee] += parseNumber(row.employeeAmount, openfisca.sign || '-');
 	}
 }
 

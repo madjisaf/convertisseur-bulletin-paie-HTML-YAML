@@ -63,10 +63,13 @@ Prévoyance TA (décès):
   employer: prevoyance_obligatoire_cadre
 NET FISCAL:
   employee: salaire_imposable
+  sign: '+'
 NET A PAYER:
   employee: salaire_net_a_payer
+  sign: '+'
 Réduction cotisations SS:
   employer: allegement_fillon
+  sign: '+'
 REMUNERATION BRUTE:
   ignore: true
 Retraite compl.:
