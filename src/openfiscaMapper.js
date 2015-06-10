@@ -16,6 +16,14 @@ function toOpenFisca(item) {
 
 	item.data.forEach(mapRow.bind(result));
 
+	try {
+		var localDefaults = yaml.safeLoad(fs.readFileSync(__dirname + '/../assets/defaults/' + item.id + '.yaml'));
+
+		_.merge(result, localDefaults);
+	} catch (err) {
+		// do nothing, there was no defaults file
+	}
+
 	delete result.data;
 	delete result.id;
 

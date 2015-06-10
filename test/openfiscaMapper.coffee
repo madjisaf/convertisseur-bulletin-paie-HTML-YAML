@@ -4,7 +4,7 @@ mapper = require '../src/openfiscaMapper'
 describe 'Mapper', ->
 	describe 'OpenFisca object', ->
 		NAME	= '3 . Taux unique sur tranches B et C (n° 5382).'
-		ID		= '25005'
+		ID		= 'test'
 		PERIOD	= 'month:2015-01'
 		SOURCE	=
 			name	: NAME
@@ -41,6 +41,10 @@ describe 'Mapper', ->
 
 		it 'should not have data', ->
 			actual.should.not.have.property 'data'
+
+		it 'should load id-specific values', ->
+			actual.should.have.property 'test'
+			actual.test.should.be.true
 
 		describe 'output variables', ->
 			it 'should have employer amount', ->
