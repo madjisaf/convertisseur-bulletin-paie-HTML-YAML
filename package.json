@@ -1,5 +1,5 @@
 {
-  "name": "memento-paie-parser",
+  "name": "convertisseur-bulletin-paie-HTML-YAML",
   "dependencies": {
     "js-yaml": "^3.3.0",
     "htmlparser2": "^3.8.2",
