@@ -16,18 +16,3 @@ Lors de la conversion, les noms utilisés dans le Memento doivent être converti
 Le parser annoncera les noms non convertibles à l'exécution, qui doivent être complétés dans `assets/openfiscaMap.yaml`.
 Le fonctionnement est donc de lancer la conversion, compléter le mapping, et itérer.
 
-
-## Post-processing
-
-Edit `assets/postProcessing.yaml`.
-
-### Contrôler le signe des variables
-
-The cotisations are negative values (finally paid by the employee from his superbrut). But some variables like
-`salaire_net_a_payer` and `salaire_imposable` are positive.
-
-Adjust the `sign` property of the variable.
-
-### Valeurs fixes
-
-Adjust the `defaultValue` property of the variable.
