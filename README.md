@@ -1,11 +1,11 @@
-# Paie Memento Parser
+# Payroll Parser
 
-Conversion du Memento paie vers des tests OpenFisca (format YAML).
+Conversion de bulletin de paie vers des tests OpenFisca (format YAML).
 
 ## Exécution
 
 - Installer [Node](https://nodejs.org).
-- Cloner ou télécharger ce dépôt et `cd paie-memento-parser`.
+- Cloner ou télécharger ce dépôt et `cd convertisseur-bulletin-paie-HTML-YAML`.
 - Installer les dépendances : `npm install`.
 - Pour lancer la conversion : `npm start`.
 
